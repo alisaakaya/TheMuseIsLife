@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Muse Is Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --red: #f03000;
+      --bg: #e8e6e1;
+      --bg2: #dedad4;
+      --white: #f5f3ee;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      font-family: 'EB Garamond', Georgia, serif;
+      color: var(--red);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      background: var(--bg);
+    }
+
+    .nav-logo {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--red);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--red);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── EMAIL HEADER ── */
+    .email-header {
+      position: fixed;
+      top: 56px;
+      left: 32px;
+      z-index: 99;
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--red);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 80px;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Repeating text rows */
+    .hero-text-field {
+      position: absolute;
+      inset: 80px 0 0 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .text-row {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 900;
+      font-size: clamp(80px, 11vw, 160px);
+      line-height: 1;
+      color: var(--red);
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+      padding: 0 8px;
+    }
+
+    /* Circle artwork */
+    .hero-circle {
+      position: relative;
+      z-index: 10;
+      width: clamp(280px, 38vw, 520px);
+      height: clamp(280px, 38vw, 520px);
+      border-radius: 50%;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 0 0 2px var(--bg);
+    }
+
+    .hero-circle svg {
+      width: 90%;
+      height: 90%;
+    }
+
+    /* ── ABOUT SECTION ── */
+    .about-section {
+      background: var(--bg2);
+      padding: 120px 32px 100px;
+    }
+
+    .about-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .about-heading {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400;
+      color: var(--red);
+      margin-bottom: 40px;
+      letter-spacing: 0.01em;
+    }
+
+    .about-body {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+      line-height: 1.65;
+      color: var(--red);
+      font-style: italic;
+    }
+
+    .about-body p + p {
+      margin-top: 28px;
+    }
+
+    .about-body em {
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    /* ── LATEST PROJECT ── */
+    .latest-section {
+      background: var(--bg2);
+      padding: 80px 32px 120px;
+    }
+
+    .latest-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding-left: 160px;
+    }
+
+    .latest-label {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 400;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+
+    .latest-desc {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      color: var(--red);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2);
+      padding: 60px 32px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    .footer-name-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--red);
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .footer-email {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      color: var(--red);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--red);
+    }
+
+    .footer-links a {
+      color: var(--red);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .footer-links a:hover {
+      opacity: 0.7;
+    }
+
+    /* divider between footer sections */
+    .footer-bottom {
+      border-top: 1px solid rgba(240,48,0,0.2);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">The Muse Is Life</a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#latest">thirtydays</a></li>
+    </ul>
+  </nav>
+
+  <!-- EMAIL UNDER NAV -->
+  <div class="email-header">themuseislife@gmail.com</div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text-field" aria-hidden="true">
+      <div class="text-row">THE M&nbsp;&nbsp;&nbsp;&nbsp;S&nbsp;&nbsp;&nbsp;IS LIFE</div>
+      <div class="text-row">THE MUSE IS LIFE</div>
+      <div class="text-row">THE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U&nbsp;&nbsp;&nbsp;E&nbsp;&nbsp;I&nbsp;&nbsp;&nbsp;LIFE</div>
+    </div>
+
+    <!-- Wire sculpture placeholder (SVG scribble art approximation) -->
+    <div class="hero-circle">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Tangled wire / scribble mass in b&w -->
+        <g stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" fill="none">
+          <path d="M200 80 C240 60, 310 90, 320 140 C330 190, 290 230, 260 200 C230 170, 270 130, 300 160 C330 190, 310 250, 280 270 C250 290, 200 300, 170 280 C140 260, 120 220, 130 190 C140 160, 170 170, 180 150 C190 130, 170 100, 200 80Z"/>
+          <path d="M180 100 C150 80, 100 110, 90 160 C80 210, 110 260, 150 270 C190 280, 230 250, 220 220 C210 190, 170 200, 160 180 C150 160, 180 130, 210 140 C240 150, 250 190, 230 210"/>
+          <path d="M220 90 C270 70, 340 120, 340 170 C340 220, 300 260, 260 250 C220 240, 200 200, 220 180 C240 160, 280 180, 290 210 C300 240, 270 280, 240 290"/>
+          <path d="M160 120 C120 100, 80 140, 80 190 C80 240, 120 280, 160 285 C200 290, 240 265, 245 235 C250 205, 220 195, 210 210 C200 225, 215 255, 200 265"/>
+          <path d="M200 95 C230 75, 280 85, 310 120 C340 155, 330 210, 300 230 C270 250, 230 240, 220 215 C210 190, 235 175, 255 185 C275 195, 285 225, 265 240"/>
+          <path d="M190 110 C170 90, 130 95, 110 125 C90 155, 95 200, 120 220 C145 240, 180 235, 190 215 C200 195, 185 175, 165 178 C145 181, 130 205, 140 225"/>
+          <path d="M210 150 C240 130, 280 145, 295 175 C310 205, 295 245, 265 255 C235 265, 205 248, 200 225 C195 202, 215 188, 235 195"/>
+          <path d="M195 160 C165 145, 135 160, 125 185 C115 210, 130 245, 155 252 C180 259, 210 243, 215 220 C220 197, 200 185, 185 192"/>
+          <path d="M200 120 C220 100, 255 108, 270 135 C285 162, 275 200, 250 210 C225 220, 200 205, 198 185 C196 165, 218 158, 238 165"/>
+          <!-- extra scribble density -->
+          <path d="M175 135 C155 115, 125 128, 112 155 C99 182, 108 220, 135 232 C162 244, 193 230, 198 208"/>
+          <path d="M225 135 C245 118, 275 128, 288 155 C301 182, 290 220, 265 232 C240 244, 210 230, 205 208"/>
+          <path d="M200 200 C215 215, 235 220, 248 210 C261 200, 265 182, 255 170 C245 158, 228 160, 220 172"/>
+          <path d="M200 200 C185 215, 165 220, 152 210 C139 200, 135 182, 145 170 C155 158, 172 160, 180 172"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      <h2 class="about-heading">What is going on here ?? ¿ ?¿¿</h2>
+      <div class="about-body">
+        <p><em>The Muse Is Life</em> is a creative collective devoted to honoring the soul of human experience. Born from a desire to document love, connection, and the sacred magic that exists in everyday life, our work centers presence as art. We believe beauty is not limited to galleries or grand stages—it lives in the laughter of strangers, the softness of light, the silent resilience of spirit.</p>
+        <p>Through visual storytelling, gallery curation, and soul-centered projects, we aim to create spaces where people can see themselves and each other more clearly. <em>The Muse Is Life</em> is a living archive—a devotion to emotion, energy, and the transformative power of simply being. Our goal is to build spaces (physical and digital) where no one feels alone, and where the magic within each person is reflected back with clarity, care, and love.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST PROJECT -->
+  <section class="latest-section" id="latest">
+    <div class="latest-inner">
+      <p class="latest-label">Latest Project</p>
+      <p class="latest-desc">Thirty Days photography,<br>Launching mid summer</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <div class="footer-name-block">
+        <div class="footer-name">LISA KAITLIN</div>
+        <div class="footer-email">themuseislife@gmail.com</div>
+      </div>
+      <div class="footer-links">
+        <a href="#">Instagram</a>,
+        <a href="#">Email</a>,
+        <a href="#">Linkedin</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
